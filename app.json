@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "puppy",
+    "slug": "puppy",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "splash": {
+      "image": "./src/assets/png/logo_puppy.png",
+      "backgroundColor": "#7AB9CD"
+    }
+  }
+}
