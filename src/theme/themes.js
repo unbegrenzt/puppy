@@ -1,9 +1,7 @@
-import { useColorScheme } from 'react-native';
+import baseTheme from "./baseTheme";
 
-const getTheme = function (themeName) {
-  const scheme = useColorScheme();
-
-  return scheme === 'dark' ? require(`./darkTheme`) : require(`./darkTheme`)
+const themes = {
+  default: baseTheme,
 }
 
-export default getTheme;
+export default themes;
