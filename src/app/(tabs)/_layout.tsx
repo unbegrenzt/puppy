@@ -58,6 +58,7 @@ export default function TabLayout() {
         name='two'
         options={{
           title: '',
+          headerTitle: 'Account',
           tabBarIcon: ({ color }) => <TabBarIcon name="account" size={24} color={color} />,
         }}
       />

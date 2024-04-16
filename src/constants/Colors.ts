@@ -36,7 +36,7 @@ export default {
     }
   },
   dark: {
-    text: '#F4F5F6',
+    text: '#1C1E21',
     background: '#F0F7F9',
     tint: '#2D6576',
     tabIconDefault: '#7AB9CD',
