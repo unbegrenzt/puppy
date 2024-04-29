@@ -1,15 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import { Dimensions, Pressable } from 'react-native';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import TabBarIcon from '@/components/atoms/TabBarIcon/TabBarIcon';
 
+const windowDimensions = Dimensions.get('window');
+const screenDimensions = Dimensions.get('screen');
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+
+  const [dimensions, setDimensions] = useState({
+    window: windowDimensions,
+    screen: screenDimensions,
+  });
+
+  useEffect(() => {
+    const subscription = Dimensions.addEventListener(
+      'change',
+      ({ window, screen }) => {
+        setDimensions({ window, screen });
+      },
+    );
+    return () => subscription?.remove();
+  });
+
+  console.log(`
+    ${Object.entries(dimensions.window).map(([key, value]) => (
+        key + ' - ' + value
+    ))}
+    Screen Dimensions
+    ${Object.entries(dimensions.screen).map(([key, value]) => (
+      key + ' - ' + value
+    ))}`);
 
   return (
     <Tabs
@@ -29,7 +56,8 @@ export default function TabLayout() {
           fontWeight: 'bold',
         },
         tabBarStyle: {
-          backgroundColor: Colors[colorScheme ?? 'light'].neutral.hueLightest
+          backgroundColor: Colors[colorScheme ?? 'light'].neutral.hueLightest,
+          height: `${8}%`
         }
       }}>
       <Tabs.Screen

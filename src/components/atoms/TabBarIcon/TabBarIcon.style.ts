@@ -12,10 +12,10 @@ export const styles = ({
   },
   container: {
     paddingHorizontal: 10,
-    marginVertical: 3,
+    marginVertical: 5,
     borderWidth: 1,
     borderColor: borderColor,
-    borderRadius: 20,
+    borderRadius: 100,
     backgroundColor: isActive ? 
       Colors[colorScheme ?? 'light'].secondary.hueDark : 
       Colors[colorScheme ?? 'light'].neutral.hueLightest,
