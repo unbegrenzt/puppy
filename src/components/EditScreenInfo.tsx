@@ -1,20 +1,24 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { Button, StyleSheet } from 'react-native';
 
 import { ExternalLink } from './ExternalLink';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
-import Colors from '@/constants/Colors';
+import Counter from '@/components/molecules/Counter';
+import useStore from '@/store/store';
 
 export default function EditScreenInfo({ path }: { path: string }) {
+
+  const isLight = useStore(state => state.isLight);
+
   return (
     <View>
-      <View style={styles.getStartedContainer}>
+      <View style={[styles.getStartedContainer, { backgroundColor: isLight ? '#fafafa' : '#000' }]}>
         <Text
           style={styles.getStartedText}
           lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
+          darkColor="rgba(0,0,0,0.8)">
           Open up the code for this screen:
         </Text>
 
@@ -28,20 +32,12 @@ export default function EditScreenInfo({ path }: { path: string }) {
         <Text
           style={styles.getStartedText}
           lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          Change any of the text, save the file, and your app will automatically update.
+          darkColor="rgba(0,0,0,0.8)">
+          la luz esta apagada: {isLight ? 'si' : 'no'}
         </Text>
       </View>
 
-      <View style={styles.helpContainer}>
-        <ExternalLink
-          style={styles.helpLink}
-          href="https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet">
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
-            Tap here if your app doesn't automatically update after making changes
-          </Text>
-        </ExternalLink>
-      </View>
+      <Counter />
     </View>
   );
 }
